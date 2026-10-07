@@ -1,0 +1,86 @@
+# ===== 凭据与本地配置（绝对不可入库）=====
+.env
+.env.local
+.env.*.local
+invoice-audit/.env
+deploy.local.env
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
+# ===== 数据库 / SQLite =====
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# ===== MinIO 对象存储数据与日志 =====
+minio-data/
+minio/
+data/minio/
+*.minio
+
+# ===== 上传的发票文件（用户隐私数据）=====
+uploads/
+uploaded/
+data/uploads/
+invoice-audit/uploads/
+*.pdf
+*.jpg
+*.jpeg
+*.png
+*.ofd
+*.ofd.xml
+
+# ===== 依赖目录 =====
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.eggs/
+vendor/
+
+# ===== 前端构建产物 =====
+dist/
+build/
+.vite/
+.cache/
+*.tsbuildinfo
+
+# ===== 日志 =====
+logs/
+*.log
+nohup.out
+*.out
+
+# ===== 运行时与进程 =====
+*.pid
+*.sock
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ===== 编辑器 =====
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.iml
+
+# ===== 打包产物 =====
+*.tar
+*.tar.gz
+*.zip
+*.7z
+*.rar
