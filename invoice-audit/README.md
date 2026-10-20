@@ -31,14 +31,14 @@
 
 ```powershell
 # 首次：安装 MySQL 8 并建库建账号（只需一次）
-wsl -u root bash -c "tr -d '\r' < /mnt/c/Users/35192/Desktop/test/发票审计系统/invoice-audit/infra/install_mysql.sh | bash"
+wsl -u root bash -c "tr -d '\r' < /mnt/c/Users/35192/Desktop/Invoice-Review-Assistant/发票审计系统/invoice-audit/infra/install_mysql.sh | bash"
 
 # 一键部署：MinIO + MySQL + 依赖 + 前端 + 后端 + 健康检查
-wsl -e bash -lc "tr -d '\r' < /mnt/c/Users/35192/Desktop/test/发票审计系统/invoice-audit/deploy.sh | bash"
+wsl -e bash -lc "tr -d '\r' < /mnt/c/Users/35192/Desktop/Invoice-Review-Assistant/发票审计系统/invoice-audit/deploy.sh | bash"
 
 # 运维
-wsl -e bash -lc "tr -d '\r' < /mnt/c/Users/35192/Desktop/test/发票审计系统/invoice-audit/status.sh | bash"   # 巡检
-wsl -e bash -lc "tr -d '\r' < /mnt/c/Users/35192/Desktop/test/发票审计系统/invoice-audit/stop.sh | bash"     # 停后端
+wsl -e bash -lc "tr -d '\r' < /mnt/c/Users/35192/Desktop/Invoice-Review-Assistant/发票审计系统/invoice-audit/status.sh | bash"   # 巡检
+wsl -e bash -lc "tr -d '\r' < /mnt/c/Users/35192/Desktop/Invoice-Review-Assistant/发票审计系统/invoice-audit/stop.sh | bash"     # 停后端
 ```
 
 访问：Windows `http://localhost:8000` · 局域网 `http://172.18.28.205:8000` · API 文档 `/docs`

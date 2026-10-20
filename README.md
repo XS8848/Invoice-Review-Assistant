@@ -44,21 +44,23 @@
 
 ```powershell
 # 在 Windows PowerShell 中执行（脚本在 WSL 内运行）
-wsl -e bash -lc "tr -d '\r' < C:\Users\35192\Desktop\test\发票审计系统\control.sh | bash -s -- start"     # 一键启动
-wsl -e bash -lc "tr -d '\r' < C:\Users\35192\Desktop\test\发票审计系统\control.sh | bash -s -- stop"      # 全部停止
-wsl -e bash -lc "tr -d '\r' < C:\Users\35192\Desktop\test\发票审计系统\control.sh | bash -s -- restart"   # 重启
-wsl -e bash -lc "tr -d '\r' < C:\Users\35192\Desktop\test\发票审计系统\control.sh | bash -s -- status"    # 巡检
-wsl -e bash -lc "tr -d '\r' < C:\Users\35192\Desktop\test\发票审计系统\control.sh | bash -s -- port 8080" # 修改端口为8080并重启
-wsl -e bash -lc "tr -d '\r' < C:\Users\35192\Desktop\test\发票审计系统\control.sh | bash -s -- lanip"      # 查当前局域网IP
-wsl -e bash -lc "tr -d '\r' < C:\Users\35192\Desktop\test\发票审计系统\control.sh | bash -s -- logs"       # 尾随后端日志
+# 下面用 $PROJ 指向项目根目录，按你的实际存放位置修改这一行即可
+$PROJ = "C:\Users\35192\Desktop\Invoice-Review-Assistant\发票审计系统"
+
+wsl -e bash -lc "tr -d '\r' < $PROJ\control.sh | bash -s -- start"     # 一键启动
+wsl -e bash -lc "tr -d '\r' < $PROJ\control.sh | bash -s -- stop"      # 全部停止
+wsl -e bash -lc "tr -d '\r' < $PROJ\control.sh | bash -s -- restart"   # 重启
+wsl -e bash -lc "tr -d '\r' < $PROJ\control.sh | bash -s -- status"    # 巡检
+wsl -e bash -lc "tr -d '\r' < $PROJ\control.sh | bash -s -- port 8080" # 修改端口为8080并重启
+wsl -e bash -lc "tr -d '\r' < $PROJ\control.sh | bash -s -- lanip"      # 查当前局域网IP
+wsl -e bash -lc "tr -d '\r' < $PROJ\control.sh | bash -s -- logs"       # 尾随后端日志
 ```
 
 ### 3.2 首次安装（只需一次）
 
 ```powershell
-wsl -u root bash -c "tr -d '\r' < /mnt/c/Users/35192/Desktop/test/发票审计系统/invoice-audit/infra/install_mysql.sh | bash"
+wsl -u root bash -c "tr -d '\r' < /mnt/c/Users/35192/Desktop/Invoice-Review-Assistant/发票审计系统/invoice-audit/infra/install_mysql.sh | bash"
 ```
-
 ### 3.3 访问与账号
 
 | 入口 | 地址 |
@@ -71,10 +73,12 @@ wsl -u root bash -c "tr -d '\r' < /mnt/c/Users/35192/Desktop/test/发票审计�
 ### 3.4 局域网访问（可选）
 
 ```powershell
-# Windows PowerShell（管理员，弹 UAC 点“是”）：自动探测当前 IP，映射 8000/9000/9001 + 防火墙放行
-powershell -ExecutionPolicy Bypass -File C:\Users\35192\Desktop\test\发票审计系统\invoice-audit\infra\lan_expose.ps1
+# Windows PowerShell（管理员，弹 UAC 点"是"）：自动探测当前 IP，映射 8000/9000/9001 + 防火墙放行
+$PROJ = "C:\Users\35192\Desktop\Invoice-Review-Assistant\发票审计系统"
+
+powershell -ExecutionPolicy Bypass -File "$PROJ\invoice-audit\infra\lan_expose.ps1"
 # 下线清理
-powershell -ExecutionPolicy Bypass -File C:\Users\35192\Desktop\test\发票审计系统\invoice-audit\infra\offline_cleanup.ps1
+powershell -ExecutionPolicy Bypass -File "$PROJ\invoice-audit\infra\offline_cleanup.ps1"
 ```
 > 原图预签名 URL 按访问来源自动适配（localhost 访问用 127.0.0.1:9000，局域网 IP 访问用同 IP:9000），无需手工改配置。
 
